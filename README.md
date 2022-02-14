@@ -1,11 +1,19 @@
 ## **Vending Machine**
-Kansas University Edwards Campus BSIT Capstone
-Professor Chris Seasholtz 
-@authors: Michael Balazs, Nick MacDonald, Ewan Cornstubble
-Source Code modified from w1am (Apr 2021). Vending-Machine. 
-https://github.com/w1am/Vending-Machine
+##<<<<<<< Vending-Machine-Simulator
+##"""
+##=======
+##>>>>>>> main
+##Kansas University Edwards Campus BSIT Capstone
+##Professor Chris Seasholtz 
+##@authors: Michael Balazs, Nick MacDonald, Ewan Cornstubble
+##Source Code modified from w1am (Apr 2021). Vending-Machine. 
+##https://github.com/w1am/Vending-Machine
+##<<<<<<< Vending-Machine-Simulator
+##"""
+##=======
 
-**Installations**
+##>>>>>>> main
+##**Installations**
 |Package|Version|
 |--|--|
 | tinydb | 4.4.0 |
