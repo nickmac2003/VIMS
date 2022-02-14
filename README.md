@@ -1,11 +1,10 @@
 ## **Vending Machine**
-"""
 Kansas University Edwards Campus BSIT Capstone
 Professor Chris Seasholtz 
 @authors: Michael Balazs, Nick MacDonald, Ewan Cornstubble
 Source Code modified from w1am (Apr 2021). Vending-Machine. 
 https://github.com/w1am/Vending-Machine
-"""
+
 **Installations**
 |Package|Version|
 |--|--|
