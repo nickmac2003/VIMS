@@ -20,7 +20,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     // Check if username is empty
     if(empty(trim($_POST["username"]))){
-        $username_err = "Please enter username.";
+        $username_err = "Please enter your username.";
     } else{
         $username = trim($_POST["username"]);
     }
@@ -35,7 +35,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validate credentials
     if(empty($username_err) && empty($password_err)){
         // Prepare a select statement
-        $sql = "SELECT id, username, password FROM Authentication_Database.users WHERE username = '" .$username. "' ";
+        $sql = "SELECT id, username, password FROM Authentication_Database.users WHERE username =$username ";
 
         if($stmt = mysqli_prepare($con, $sql)){
             // Bind variables to the prepared statement as parameters
@@ -52,11 +52,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 // Check if username exists, if yes then verify password
                 if(mysqli_stmt_num_rows($stmt) == 1){
                     // Bind result variables
-                    mysqli_stmt_bind_result($stmt, $id, $username, $password);
+		     mysqli_stmt_bind_result($stmt, $id, $username, $password);
                     if(mysqli_stmt_fetch($stmt)){
                         if(password_verify($password)){
                             // Password is correct, so start a new session
-                            //session_start();
+                            session_start();
 
                             // Store data in session variables
                             $_SESSION["loggedin"] = true;
@@ -77,8 +77,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
             }
-
-            // Close statement
+	     // Close statement
             mysqli_stmt_close($stmt);
         }
     }
@@ -86,24 +85,24 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     mysqli_close($con);
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VIMS Login</title>
-<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="static/style.css">
 </head>
 <body>
         <div id="id01" class="modal">
 
-                <form class="modal-content animate" action="search.php">
+                <form class="modal-content animate" method="POST" action="search.php">
                         <div class="imgcontainer">
 
                                 <img src="images/vims.PNG" alt="logo" class="logo">
                         </div>
-
-                        <div class="container">
+			<div class="container">
                                 <label><b>Username</b></label>
                                 <input type="text" placeholder="Enter Username" name="username" required>
 
@@ -114,9 +113,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                 <input type="checkbox" checked="checked"> Remember me!
                         </div>
 
-                        <div class="container" style="background-color:#f1f1f1">
-                                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                                <span class="password">©2022</span>
+                        <div class="container">
+                                <button type="button" onclick="location.href='index.php'" class="cancelbtn">Clear</button>
+                                <span class="password"></span>
                         </div>
                 </form>
         </div>
