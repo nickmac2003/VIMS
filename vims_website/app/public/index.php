@@ -26,11 +26,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validate credentials
     if(empty($username_err) && empty($password_err)){
         // Prepare a select statement
-<<<<<<< HEAD
         $sql = "SELECT id, username, password FROM authentication_database.users WHERE username = ?";
-=======
         $sql = "SELECT id, username, password FROM Authentication_Database.users WHERE username =$username ";
->>>>>>> c91d0939161406df5119109d9e6395dcacf68580
 
         if($stmt = mysqli_prepare($con, $sql)){
             // Bind variables to the prepared statement as parameters
@@ -94,11 +91,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <body>
         <div id="id01" class="modal">
 
-<<<<<<< HEAD
                 <form class="modal-content animate" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
-=======
                 <form class="modal-content animate" method="POST" action="search.php">
->>>>>>> c91d0939161406df5119109d9e6395dcacf68580
                         <div class="imgcontainer">
 
                                 <img src="images/vims.PNG" alt="logo" class="logo">
@@ -115,11 +109,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         </div>
 
                         <div class="container">
-<<<<<<< HEAD
                                 <button type="button" onclick="location.href='logout.php'" class="cancelbtn">Clear</button>
-=======
                                 <button type="button" onclick="location.href='index.php'" class="cancelbtn">Clear</button>
->>>>>>> c91d0939161406df5119109d9e6395dcacf68580
                                 <span class="password"></span>
                         </div>
                 </form>
