@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+    <title>My-MetaData</title>
+<link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+<p>ITEC 440 Lab01 Fall 2021<br><br>
+by Nick MacDonald<br><br>
+Flask web application to display AWS instance metadata.<br><br></p>
+  <table class="table">
+    <tr class="table__header">
+      {% for header in headings %}
+      <th class="table__cell">{{ header }}</th>
+      {% endfor %}
+    </tr>
+    {% for row in data %}
+    <tr class="table__row">
+      {% for cell in row %}
+      <td class="table__cell">{{ cell }}</td>
+      {% endfor %}
+    </tr>
+    {% endfor %}
+  </table>
+</body>
+</html>
+
