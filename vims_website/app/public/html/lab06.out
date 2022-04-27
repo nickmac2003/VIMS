@@ -1,6 +1,0 @@
-{"type": "Feature", "geometry": {"type": "Point", "coordinates": [-73.96644, 40.79086]}, "properties": {"Artist": "Matthew Wilder", "Songs": 1, "A_ID": "ARJJ8611187FB5321F"}}
-{"type": "Feature", "geometry": {"type": "Point", "coordinates": [-1.46454, 53.38311]}, "properties": {"Artist": "Richard H Kirk", "Songs": 1, "A_ID": "ARMM1WO1187B9B83D8"}}
-{"type": "Feature", "geometry": {"type": "Point", "coordinates": [-0.01802, 51.4536]}, "properties": {"Artist": "The Bonzo Dog Band", "Songs": 1, "A_ID": "ARTC1LV1187B9A4858"}}
-{"type": "Feature", "geometry": {"type": "Point", "coordinates": [-87.63241, 41.88415]}, "properties": {"Artist": "Chaka Khan_ Rufus", "Songs": 1, "A_ID": "AR5LMPY1187FB573FE"}}
-{"type": "Feature", "geometry": {"type": "Point", "coordinates": [-122.42005, 37.77916]}, "properties": {"Artist": "Western Addiction", "Songs": 1, "A_ID": "AR73AIO1187B9AD57B"}}
-{"type": "Feature", "geometry": {"type": "Point", "coordinates": [-74.21956, 40.57885]}, "properties": {"Artist": "The Smithereens", "Songs": 1, "A_ID": "ARA23XO1187B9AF18F"}}
