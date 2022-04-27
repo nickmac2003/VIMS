@@ -1,13 +1,4 @@
 <?php
-// Initialize the session
-session_start();
-
-// Check if the user is already logged in, if yes then redirect them to the search page.
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: search.php");
-    exit;
-}
-
 // Include config file
 require_once "config.php";
 
@@ -20,7 +11,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     // Check if username is empty
     if(empty(trim($_POST["username"]))){
-        $username_err = "Please enter username.";
+        $username_err = "Please enter your username.";
     } else{
         $username = trim($_POST["username"]);
     }
@@ -35,7 +26,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validate credentials
     if(empty($username_err) && empty($password_err)){
         // Prepare a select statement
-        $sql = "SELECT id, username, password FROM Authentication_Database.users WHERE username = '" .$username. "' ";
+        $sql = "SELECT id, username, password FROM authentication_database.users WHERE username = ?";
 
         if($stmt = mysqli_prepare($con, $sql)){
             // Bind variables to the prepared statement as parameters
@@ -54,9 +45,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     // Bind result variables
                     mysqli_stmt_bind_result($stmt, $id, $username, $password);
                     if(mysqli_stmt_fetch($stmt)){
-                        if(password_verify($password)){
+                        if($_POST['password'] === $password){
                             // Password is correct, so start a new session
-                            //session_start();
+                            session_start();
 
                             // Store data in session variables
                             $_SESSION["loggedin"] = true;
@@ -67,12 +58,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             header("location: search.php");
                         } else{
                             // Password is not valid, display a generic error message
-                            $login_err = "Invalid username or password.";
+                            $login_err1 = "Invalid Password";
+			    echo $login_err1;
                         }
                     }
                 } else{
                     // Username doesn't exist, display a generic error message
-                    $login_err = "Invalid username or password.";
+                    $login_err2 = "Invalid Username";
+		    echo $login_err2;
                 }
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
@@ -92,12 +85,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VIMS Login</title>
-<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="static/style.css">
 </head>
 <body>
         <div id="id01" class="modal">
 
-                <form class="modal-content animate" action="search.php">
+                <form class="modal-content animate" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
                         <div class="imgcontainer">
 
                                 <img src="images/vims.PNG" alt="logo" class="logo">
@@ -114,9 +107,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                 <input type="checkbox" checked="checked"> Remember me!
                         </div>
 
-                        <div class="container" style="background-color:#f1f1f1">
-                                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                                <span class="password">©2022</span>
+                        <div class="container">
+                                <button type="button" onclick="location.href='logout.php'" class="cancelbtn">Clear</button>
+                                <span class="password"></span>
                         </div>
                 </form>
         </div>
