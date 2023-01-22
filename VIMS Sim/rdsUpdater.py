@@ -1,3 +1,4 @@
+# Written by Nick MacDonald
 #rdsupdater.py
 #!/usr/bin/env python3
 #import pymysql.cursors
